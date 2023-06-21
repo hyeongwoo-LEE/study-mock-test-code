@@ -9,6 +9,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findAllBySellingStatusIn(List<ProductSellingStatus> sellingTypes);
 
+    List<Product> findALlByProductNumberIn(List<String> productNumbers);
+
     @Query(value = "select p.product_number from Product p order by p.id desc limit 1", nativeQuery = true)
     String findLatestProductNumber();
 }
