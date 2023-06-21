@@ -74,6 +74,24 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).isEmpty();
     }
 
+    @DisplayName("총 가격 계산")
+    @Test
+    public void calculateTotalPrice() {
+        // given
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
+        Latte latte = new Latte();
+
+        cafeKiosk.add(americano);
+        cafeKiosk.add(latte);
+
+        // when
+        int totalPrice = cafeKiosk.calculateTotalPrice();
+
+        // then
+        assertThat(totalPrice).isEqualTo(8500);
+    }
+
     @DisplayName("주문")
     @Test
     public void createOrder() {
@@ -90,7 +108,7 @@ class CafeKioskTest {
         assertThat(order.getBeverages().get(0).getName()).isEqualTo("아메리카노");
     }
 
-    @DisplayName("주문 - 오픈시간 외")
+    @DisplayName("영업 시작 시간 이전에는 주문을 생성할 수 없다.")
     @Test
     public void createOrderOutsideOpenTime() {
         // given
@@ -103,8 +121,4 @@ class CafeKioskTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("주문 시간이 아닙니다. 관리자에게 문의하세요.");
     }
-
-
-
-
 }
