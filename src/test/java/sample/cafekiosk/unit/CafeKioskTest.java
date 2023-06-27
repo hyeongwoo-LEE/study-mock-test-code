@@ -30,7 +30,7 @@ class CafeKioskTest {
         Americano americano = new Americano();
 
         cafeKiosk.add(americano, 2);
-        assertThat(cafeKiosk.getBeverages()).hasSize(1);
+        assertThat(cafeKiosk.getBeverages()).hasSize(2);
         assertThat(cafeKiosk.getBeverages().get(0).getName()).isEqualTo("아메리카노");
     }
 

@@ -39,6 +39,9 @@ dependencies {
 
     // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Guava
+    implementation("com.google.guava:guava:32.1.0-jre")
 }
 
 tasks.named('test') {
